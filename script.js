@@ -5,60 +5,50 @@ async function loadLevels() {
     const response = await fetch("./data/levels.json");
 
     if (!response.ok) {
-        throw new Error("Could not load levels.json");
+        throw new Error("Failed to load levels.json");
     }
 
     levels = await response.json();
 
-    displayLevelList();
-    displayLevel(0);
+    renderList();
+    renderLevel(0);
 }
 
-function displayLevelList() {
-    const levelList = document.getElementById("levelList");
+function renderList() {
+    const list = document.getElementById("level-list");
 
-    levelList.innerHTML = "";
-
-    levels.forEach((level, index) => {
-        const button = document.createElement("button");
-
-        button.className = "level-button";
-
-        if (index === selectedLevel) {
-            button.classList.add("active");
-        }
-
-        button.innerHTML = `
+    list.innerHTML = levels.map((level, index) => `
+        <button
+            class="level-button ${index === selectedLevel ? "active" : ""}"
+            onclick="selectLevel(${index})"
+        >
             <div class="rank">#${index + 1}</div>
             <div class="level-name">${level.name}</div>
-        `;
-
-        button.addEventListener("click", () => {
-            selectedLevel = index;
-
-            displayLevelList();
-            displayLevel(index);
-        });
-
-        levelList.appendChild(button);
-    });
+        </button>
+    `).join("");
 }
 
-function displayLevel(index) {
+function selectLevel(index) {
+    selectedLevel = index;
+    renderList();
+    renderLevel(index);
+}
+
+function renderLevel(index) {
     const level = levels[index];
-    const levelInfo = document.getElementById("levelInfo");
+    const details = document.getElementById("level-details");
 
     if (!level) {
-        levelInfo.innerHTML = "<h2>Level not found.</h2>";
+        details.innerHTML = "<h2>Level not found</h2>";
         return;
     }
 
-    let recordsHTML = "";
+    let records = "";
 
     if (level.records.length === 0) {
-        recordsHTML = "<p>No records submitted yet.</p>";
+        records = "<p>No records submitted yet.</p>";
     } else {
-        recordsHTML = level.records.map(record => `
+        records = level.records.map(record => `
             <div class="record">
                 <strong>${record.user}</strong>
                 <div>${record.percent}% — ${record.hz}Hz</div>
@@ -66,95 +56,55 @@ function displayLevel(index) {
         `).join("");
     }
 
-    let videoHTML = "";
-
-    if (level.verification) {
-        const videoID = getYouTubeID(level.verification);
-
-        if (videoID) {
-            videoHTML = `
-                <iframe
-                    class="video"
-                    src="https://www.youtube.com/embed/${videoID}"
-                    allowfullscreen>
-                </iframe>
-            `;
-        }
-    }
-
-    levelInfo.innerHTML = `
+    details.innerHTML = `
         <h2>${level.name}</h2>
 
-        <div class="info-box">
-            <div class="info-item">
+        <div class="info-grid">
+            <div class="info-box">
                 <strong>Level ID</strong>
                 ${level.id || "Not added"}
             </div>
 
-            <div class="info-item">
+            <div class="info-box">
                 <strong>Author</strong>
                 ${level.author || "Not added"}
             </div>
 
-            <div class="info-item">
+            <div class="info-box">
                 <strong>Creators</strong>
-                ${level.creators.length > 0
+                ${level.creators.length
                     ? level.creators.join(", ")
                     : "Not added"}
             </div>
 
-            <div class="info-item">
+            <div class="info-box">
                 <strong>Verifier</strong>
                 ${level.verifier || "Not added"}
             </div>
 
-            <div class="info-item">
+            <div class="info-box">
                 <strong>Percent to Qualify</strong>
-                ${level.percentToQualify || "Not added"}%
+                ${level.percentToQualify}%
             </div>
 
-            <div class="info-item">
+            <div class="info-box">
                 <strong>Password</strong>
                 ${level.password || "Free To Copy"}
             </div>
         </div>
 
-        ${videoHTML}
-
         <div class="records">
             <h3>Records</h3>
-            ${recordsHTML}
+            ${records}
         </div>
     `;
-}
-
-function getYouTubeID(url) {
-    if (!url) {
-        return null;
-    }
-
-    try {
-        const parsed = new URL(url);
-
-        if (parsed.hostname.includes("youtube.com")) {
-            return parsed.searchParams.get("v");
-        }
-
-        if (parsed.hostname.includes("youtu.be")) {
-            return parsed.pathname.substring(1);
-        }
-    } catch {
-        return null;
-    }
-
-    return null;
 }
 
 loadLevels().catch(error => {
     console.error(error);
 
-    document.getElementById("levelInfo").innerHTML = `
-        <h2>Failed to load the level list.</h2>
-        <p>Check that data/levels.json exists.</p>
+    document.getElementById("level-details").innerHTML = `
+        <h2>Failed to load level list</h2>
+        <p>Make sure data/levels.json exists.</p>
     `;
 });
