@@ -3,34 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Frying Pan's Friends</title>
+
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
     <header class="header">
-        <div>
+        <div class="header-left">
             <h1>Frying Pan's Friends</h1>
             <p>Hardest Created Levels List</p>
         </div>
 
         <nav>
-            <button class="nav-button active">List</button>
-            <button class="nav-button">Leaderboard</button>
-            <button class="nav-button">Roulette</button>
+            <button class="nav-button active" data-page="list">List</button>
+            <button class="nav-button" data-page="leaderboard">Leaderboard</button>
+            <button class="nav-button" data-page="roulette">Roulette</button>
         </nav>
     </header>
 
     <main>
-        <section class="list-panel">
-            <h2>Levels</h2>
-            <div id="level-list"></div>
+        <!-- LIST PAGE -->
+        <section id="list-page" class="page">
+            <section class="list-panel">
+                <h2>Levels</h2>
+                <div id="level-list"></div>
+            </section>
+
+            <section class="details-panel">
+                <div id="level-details">
+                    <h2>Loading...</h2>
+                </div>
+            </section>
         </section>
 
-        <section class="details-panel">
-            <div id="level-details">
-                <h2>Loading...</h2>
-            </div>
+        <!-- LEADERBOARD PAGE -->
+        <section id="leaderboard-page" class="page hidden">
+            <section class="wide-panel">
+                <h2>Leaderboard</h2>
+
+                <div id="leaderboard">
+                    <p>Loading leaderboard...</p>
+                </div>
+            </section>
+        </section>
+
+        <!-- ROULETTE PAGE -->
+        <section id="roulette-page" class="page hidden">
+            <section class="wide-panel roulette-panel">
+                <h2>Level Roulette</h2>
+                <p class="roulette-description">
+                    Don't know what to play? Let the list choose for you.
+                </p>
+
+                <button id="roulette-button" class="roulette-button">
+                    Pick a Level
+                </button>
+
+                <div id="roulette-result"></div>
+            </section>
         </section>
     </main>
 
