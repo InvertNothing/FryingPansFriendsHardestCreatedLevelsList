@@ -89,10 +89,6 @@ nav {
 main {
     width: min(1400px, calc(100% - 40px));
     margin: 25px auto;
-
-    display: grid;
-    grid-template-columns: 360px minmax(0, 1fr);
-    gap: 18px;
 }
 
 /* PANELS */
@@ -102,15 +98,16 @@ main {
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 12px;
+    overflow: hidden;
 }
 
 .list-panel {
-    padding: 16px;
+    padding: 20px;
 }
 
 .details-panel {
-    padding: 28px;
-    min-height: 500px;
+    padding: 32px;
+    min-height: 600px;
 }
 
 .list-panel h2 {
@@ -303,7 +300,8 @@ footer {
 .page {
     display: grid;
     grid-template-columns: 360px minmax(0, 1fr);
-    gap: 18px;
+    gap: 24px;
+    width: 100%;
 }
 
 .hidden {
