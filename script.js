@@ -25,13 +25,21 @@ function renderList() {
     const list = document.getElementById("level-list");
 
     list.innerHTML = levels.map((level, index) => `
-        <button
-            class="level-button ${index === selectedLevel ? "active" : ""}"
-            onclick="selectLevel(${index})"
-        >
-            <div class="rank">#${index + 1}</div>
-            <div class="level-name">${level.name}</div>
-        </button>
+       <button
+    class="level-button ${index === selectedLevel ? "active" : ""}"
+    onclick="selectLevel(${index})"
+>
+    <img
+        class="level-thumbnail"
+        src="${level.thumbnail}"
+        alt="${level.name}"
+    >
+
+    <div class="level-text">
+        <div class="rank">#${index + 1}</div>
+        <div class="level-name">${level.name}</div>
+    </div>
+</button>
     `).join("");
 }
 
