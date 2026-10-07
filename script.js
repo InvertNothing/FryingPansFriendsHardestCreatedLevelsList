@@ -85,11 +85,17 @@ function renderLevel(index) {
     }
 
     details.innerHTML = `
-        <div class="level-header">
-            <div>
-                <div class="level-rank">#${index + 1}</div>
-                <h2>${level.name}</h2>
-            </div>
+    <div class="level-header">
+        <img
+            class="large-thumbnail"
+            src="${level.thumbnail}"
+            alt="${level.name}"
+        >
+
+       <div class="level-title">
+    <div class="level-rank">#${index + 1}</div>
+    <h2>${level.name}</h2>
+</div>
 
             <div class="demon-badge">DEMON</div>
         </div>
