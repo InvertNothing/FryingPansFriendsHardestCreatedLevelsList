@@ -8,6 +8,7 @@
         "verification": "",
         "percentToQualify": 100,
         "password": "Free To Copy",
+        "thumbnail": "./assets/levels/shitty-gxed-5.png",
         "records": []
     },
     {
@@ -19,6 +20,7 @@
         "verification": "",
         "percentToQualify": 100,
         "password": "",
+        "thumbnail": "./assets/levels/ascending.png",
         "records": []
     },
     {
@@ -30,6 +32,7 @@
         "verification": "",
         "percentToQualify": 100,
         "password": "",
+        "thumbnail": "./assets/levels/putty-layout-finale.png",
         "records": []
     }
 ]
