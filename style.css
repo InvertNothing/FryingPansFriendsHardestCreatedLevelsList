@@ -1,1 +1,181 @@
+* {
+    box-sizing: border-box;
+}
 
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #111111;
+    color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background: #181818;
+    border-bottom: 1px solid #333;
+}
+
+.header-left h1 {
+    margin: 0;
+    font-size: 26px;
+}
+
+.header-left p {
+    margin: 5px 0 0;
+    color: #aaa;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-button {
+    border: none;
+    background: #252525;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.nav-button:hover,
+.nav-button.active {
+    background: #3a3a3a;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 20px;
+    padding: 25px;
+    max-width: 1400px;
+    margin: auto;
+}
+
+.level-list,
+.level-info {
+    background: #181818;
+    border: 1px solid #333;
+    border-radius: 12px;
+}
+
+.level-list {
+    padding: 15px;
+}
+
+.level-list h2 {
+    margin-top: 0;
+}
+
+.level-button {
+    width: 100%;
+    text-align: left;
+    border: none;
+    background: #242424;
+    color: white;
+    padding: 15px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.level-button:hover {
+    background: #303030;
+}
+
+.level-button.active {
+    background: #3b3b3b;
+}
+
+.rank {
+    font-weight: bold;
+    color: #aaa;
+}
+
+.level-name {
+    font-size: 16px;
+    margin-top: 4px;
+}
+
+.level-info {
+    padding: 25px;
+}
+
+.level-info h2 {
+    font-size: 30px;
+    margin-top: 0;
+}
+
+.info-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.info-item {
+    background: #242424;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.info-item strong {
+    display: block;
+    color: #aaa;
+    margin-bottom: 5px;
+}
+
+.records {
+    margin-top: 25px;
+}
+
+.record {
+    background: #242424;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 8px;
+}
+
+.video {
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #777;
+}
+
+@media (max-width: 800px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    nav {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .info-box {
+        grid-template-columns: 1fr;
+    }
+
+    .video {
+        height: 300px;
+    }
+}
