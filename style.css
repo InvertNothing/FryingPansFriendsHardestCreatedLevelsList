@@ -5,11 +5,11 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #111111;
-    color: white;
+    background: #101010;
+    color: #ffffff;
 }
 
-header {
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -18,27 +18,26 @@ header {
     border-bottom: 1px solid #333;
 }
 
-.header-left h1 {
+.header h1 {
     margin: 0;
-    font-size: 26px;
 }
 
-.header-left p {
+.header p {
     margin: 5px 0 0;
-    color: #aaa;
+    color: #999;
 }
 
 nav {
     display: flex;
-    gap: 10px;
+    gap: 8px;
 }
 
 .nav-button {
-    border: none;
-    background: #252525;
-    color: white;
+    border: 0;
     padding: 10px 16px;
     border-radius: 8px;
+    background: #252525;
+    color: white;
     cursor: pointer;
 }
 
@@ -51,81 +50,78 @@ main {
     display: grid;
     grid-template-columns: 320px 1fr;
     gap: 20px;
-    padding: 25px;
     max-width: 1400px;
     margin: auto;
+    padding: 25px;
 }
 
-.level-list,
-.level-info {
+.list-panel,
+.details-panel {
     background: #181818;
     border: 1px solid #333;
     border-radius: 12px;
 }
 
-.level-list {
+.list-panel {
     padding: 15px;
 }
 
-.level-list h2 {
+.list-panel h2 {
     margin-top: 0;
 }
 
 .level-button {
     width: 100%;
-    text-align: left;
-    border: none;
+    padding: 14px;
+    margin-bottom: 8px;
+    border: 0;
+    border-radius: 8px;
     background: #242424;
     color: white;
-    padding: 15px;
-    margin-bottom: 8px;
-    border-radius: 8px;
+    text-align: left;
     cursor: pointer;
 }
 
-.level-button:hover {
-    background: #303030;
-}
-
+.level-button:hover,
 .level-button.active {
-    background: #3b3b3b;
+    background: #363636;
 }
 
 .rank {
+    color: #999;
     font-weight: bold;
-    color: #aaa;
 }
 
 .level-name {
-    font-size: 16px;
     margin-top: 4px;
+    font-size: 16px;
 }
 
-.level-info {
+.details-panel {
     padding: 25px;
 }
 
-.level-info h2 {
-    font-size: 30px;
+.details-panel h2 {
     margin-top: 0;
+    font-size: 30px;
 }
 
-.info-box {
+.info-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 12px;
     margin-top: 20px;
 }
 
-.info-item {
-    background: #242424;
+.info-box {
     padding: 15px;
     border-radius: 8px;
+    background: #242424;
 }
 
-.info-item strong {
+.info-box strong {
     display: block;
-    color: #aaa;
+    color: #999;
     margin-bottom: 5px;
 }
 
@@ -134,48 +130,39 @@ main {
 }
 
 .record {
-    background: #242424;
     padding: 12px;
     margin-top: 8px;
     border-radius: 8px;
+    background: #242424;
 }
 
 .video {
     width: 100%;
     max-width: 800px;
     height: 450px;
-    border: none;
-    border-radius: 10px;
     margin-top: 20px;
+    border: 0;
+    border-radius: 10px;
 }
 
 footer {
-    text-align: center;
     padding: 25px;
+    text-align: center;
     color: #777;
 }
 
 @media (max-width: 800px) {
-    main {
-        grid-template-columns: 1fr;
-    }
-
-    header {
+    .header {
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;
     }
 
-    nav {
-        width: 100%;
-        overflow-x: auto;
-    }
-
-    .info-box {
+    main {
         grid-template-columns: 1fr;
     }
 
-    .video {
-        height: 300px;
+    .info-grid {
+        grid-template-columns: 1fr;
     }
 }
